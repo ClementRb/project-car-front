@@ -16,7 +16,7 @@
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
-@import '~@ionic/angular/css/display.css';
+@import "~@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
 @import "~@ionic/angular/css/padding.css";
@@ -24,3 +24,36 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+@font-face {
+  font-family: 'Avenir Book';
+  src: url('./assets/fonts/avenir/AvenirLTStd-Book.otf');
+}
+
+@font-face {
+  font-family: 'Avenir Medium';
+  src: url('./assets/fonts/avenir/AvenirLTStd-Medium.otf');
+}
+
+@font-face {
+  font-family: 'Avenir Roman';
+  src: url('./assets/fonts/avenir/AvenirLTStd-Roman.otf');
+}
+
+:root {
+  --ion-font-family: 'Avenir Book';
+  font-family: 'Avenir Book';
+}
+
+.primary-input {
+  --background: rgba(78, 89, 111, 0.4) ;
+  border-radius: 20px;
+  --padding-start: 30px;
+  --color: #ffffff;
+}
+
+.primary-button {
+  --background-activated: #d85956;
+}
+
+

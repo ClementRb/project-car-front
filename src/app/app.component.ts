@@ -27,7 +27,7 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
 
-      this.authenticationService.authState.subscribe(state => {
+      this.authenticationService.authenticationState.subscribe(state => {
         if (state) {
           this.router.navigate(['tab1'])
         } else {
