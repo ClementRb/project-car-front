@@ -1,5 +1,7 @@
 {
   "name": "FrontCar",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
