@@ -1,15 +1,52 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+import { UserService } from "src/app/services/user/user.service";
+import { Storage } from "@ionic/storage";
+import { HTTP } from "@ionic-native/http/ngx";
+import { Router } from "@angular/router";
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+  selector: "app-login",
+  templateUrl: "./login.page.html",
+  styleUrls: ["./login.page.scss"]
 })
 export class LoginPage implements OnInit {
+  form = {
+    username: null,
+    password: null
+  };
+  constructor(
+    private user: UserService,
+    private storage: Storage,
+    private http: HTTP,
+    private router: Router,
+    private authenticationService: AuthenticationService
+  ) {}
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  login() {
+    const username = this.form.username;
+    const password = this.form.password;
+    if (username && password) {
+      this.user
+        .login(username, password)
+        .then(data => {
+          console.log(data)
+          const newData = JSON.parse(data);
+          const token = "Bearer " + newData.token;
+          this.http.setHeader("*", "Authorization", token);
+          this.user.getUserInfos(username).then(data => {
+            console.log(data);
+          })
+          this.storage.set("TOKEN_KEY", token).then(() => {
+            this.authenticationService.authenticationState.next(true);
+            this.router.navigate([""]);
+          });
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
   }
-
 }

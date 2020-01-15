@@ -17,6 +17,7 @@
               class="primary-input"
               type="text"
               placeholder="Username"
+              [(ngModel)]="form.username"
             ></ion-input>
           </div>
         </ion-col>
@@ -26,6 +27,7 @@
                 class="primary-input"
                 type="email"
                 placeholder="Email"
+                [(ngModel)]="form.email"
               ></ion-input>
             </div>
           </ion-col>
@@ -35,6 +37,7 @@
               class="primary-input"
               type="password"
               placeholder="Password"
+              [(ngModel)]="form.password"
             ></ion-input>
           </div>
         </ion-col>
@@ -45,6 +48,7 @@
               expand="block"
               color="primary"
               shape="round"
+              (click)="register()"
               >REGISTER</ion-button
             >
           </div>

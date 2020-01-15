@@ -13,7 +13,7 @@ import { AuthGuardService } from "./services/auth-guard.service";
 import { AuthenticationService } from "./services/authentication.service";
 
 import { IonicStorageModule } from '@ionic/storage';
-import { HttpClientModule }    from '@angular/common/http';
+import { HTTP } from '@ionic-native/http/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,7 +23,6 @@ import { HttpClientModule }    from '@angular/common/http';
     IonicModule.forRoot(),
     IonicStorageModule.forRoot(),
     AppRoutingModule,
-    HttpClientModule
   ],
   providers: [
     StatusBar,
@@ -31,6 +30,7 @@ import { HttpClientModule }    from '@angular/common/http';
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     AuthGuardService,
     AuthenticationService,
+    HTTP,
   ],
   bootstrap: [AppComponent]
 })
