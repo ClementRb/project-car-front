@@ -1,25 +1,13 @@
 <ion-content>
-  <ion-card color="dark">
-    <ion-card-header>
-      <ion-card-subtitle>Get Started</ion-card-subtitle>
-      <ion-card-title>Welcome to Ionic</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-col size="12" style="margin-top: 20px;">
-        <div>
-          <ion-button
-            class="primary-button"
-            expand="block"
-            color="primary"
-            shape="round"
-            (click)="logout()"
-            >LOGOUT</ion-button
-          >
-        </div>
-      </ion-col>
-    </ion-card-content>
-  </ion-card>
-  <ion-card color="dark" *ngFor="let car of cars">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-card color='dark' *ngFor='let car of cars'>
     <ion-card-header>
       <ion-card-subtitle>{{car.brand.name}} - {{car.model.name}}</ion-card-subtitle>
       <ion-card-title>{{car.subModel.name}}</ion-card-title>

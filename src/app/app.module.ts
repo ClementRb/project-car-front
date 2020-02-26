@@ -1,28 +1,33 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { RouteReuseStrategy } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { RouteReuseStrategy } from "@angular/router";
 
-import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { IonicModule, IonicRouteStrategy } from "@ionic/angular";
+import { SplashScreen } from "@ionic-native/splash-screen/ngx";
+import { StatusBar } from "@ionic-native/status-bar/ngx";
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { AppRoutingModule } from "./app-routing.module";
+import { AppComponent } from "./app.component";
 
 import { AuthGuardService } from "./services/auth-guard.service";
 import { AuthenticationService } from "./services/authentication.service";
 
-import { IonicStorageModule } from '@ionic/storage';
-import { HTTP } from '@ionic-native/http/ngx';
+import { IonicStorageModule } from "@ionic/storage";
+import { HTTP } from "@ionic-native/http/ngx";
+import { HTTP_INTERCEPTORS } from "@angular/common/http";
+import { AddCarPage } from "./Modal/add-car/add-car.page";
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
+  declarations: [AppComponent, AddCarPage],
+  entryComponents: [AddCarPage],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
-    IonicStorageModule.forRoot(),
-    AppRoutingModule,
+    IonicStorageModule.forRoot({
+      name: "__mydb",
+      driverOrder: ["localstorage", "indexeddb", "websql"]
+    }),
+    AppRoutingModule
   ],
   providers: [
     StatusBar,
@@ -30,7 +35,7 @@ import { HTTP } from '@ionic-native/http/ngx';
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     AuthGuardService,
     AuthenticationService,
-    HTTP,
+    HTTP
   ],
   bootstrap: [AppComponent]
 })

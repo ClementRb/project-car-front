@@ -1,54 +1,54 @@
 <ion-header>
-  <ion-toolbar color="secondary">
-      <ion-buttons slot="start">
-          <ion-back-button text="" icon="arrow-round-back" color="light"></ion-back-button>
+  <ion-toolbar color='secondary'>
+      <ion-buttons slot='start'>
+          <ion-back-button text='' icon='arrow-round-back' color='light'></ion-back-button>
         </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content class="ion-padding">
-    <ion-grid style="padding: 20px;">
+<ion-content class='ion-padding'>
+    <ion-grid style='padding: 20px;'>
       <ion-row>
-        <ion-col size="12">
-          <h1 style="font-weight: 900; color: white; font-size: 30px;">Create an account</h1>
+        <ion-col size='12'>
+          <h1 style='font-weight: 900; color: white; font-size: 30px;'>Create an account</h1>
         </ion-col>
-        <ion-col size="12" style="margin-top: 100px;">
+        <ion-col size='12' style='margin-top: 100px;'>
           <div>
             <ion-input
-              class="primary-input"
-              type="text"
-              placeholder="Username"
-              [(ngModel)]="form.username"
+              class='primary-input'
+              type='text'
+              placeholder='Username'
+              [(ngModel)]='form.username'
             ></ion-input>
           </div>
         </ion-col>
-        <ion-col size="12" style="margin-top: 5px;">
+        <ion-col size='12' style='margin-top: 5px;'>
             <div>
               <ion-input
-                class="primary-input"
-                type="email"
-                placeholder="Email"
-                [(ngModel)]="form.email"
+                class='primary-input'
+                type='email'
+                placeholder='Email'
+                [(ngModel)]='form.email'
               ></ion-input>
             </div>
           </ion-col>
-        <ion-col size="12" style="margin-top: 5px;">
+        <ion-col size='12' style='margin-top: 5px;'>
           <div>
             <ion-input
-              class="primary-input"
-              type="password"
-              placeholder="Password"
-              [(ngModel)]="form.password"
+              class='primary-input'
+              type='password'
+              placeholder='Password'
+              [(ngModel)]='form.password'
             ></ion-input>
           </div>
         </ion-col>
-        <ion-col size="12" style="margin-top: 20px;">
+        <ion-col size='12' style='margin-top: 20px;'>
           <div>
             <ion-button
-              class="primary-button"
-              expand="block"
-              color="primary"
-              shape="round"
-              (click)="register()"
+              class='primary-button'
+              expand='block'
+              color='primary'
+              shape='round'
+              (click)='register()'
               >REGISTER</ion-button
             >
           </div>

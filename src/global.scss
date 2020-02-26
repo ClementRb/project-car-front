@@ -56,4 +56,26 @@
   --background-activated: #d85956;
 }
 
+.background-primary {
+  --background: #242a38;
+  --color: white;
+}
 
+.basicOption {
+  --color	: black;
+}
+
+.importantOption {
+  --color	: red;
+}
+
+.basicAlert {
+  --background: grey;
+}
+
+.basicAlert .basicInput {
+  --background: white !important;
+  background-color: white !important;
+  --color	: black;
+  --placeholder-color	: grey;
+}

@@ -1,15 +1,15 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
-import { Platform } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Platform } from "@ionic/angular";
+import { SplashScreen } from "@ionic-native/splash-screen/ngx";
+import { StatusBar } from "@ionic-native/status-bar/ngx";
 import { Router } from "@angular/router";
 import { AuthenticationService } from "./services/authentication.service";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: 'app.component.html',
-  styleUrls: ['app.component.scss']
+  selector: "app-root",
+  templateUrl: "app.component.html",
+  styleUrls: ["app.component.scss"]
 })
 export class AppComponent {
   constructor(
@@ -17,7 +17,7 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private authenticationService: AuthenticationService,
-    private router: Router,
+    private router: Router
   ) {
     this.initializeApp();
   }
@@ -27,13 +27,15 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
 
+      this.authenticationService.checkToken();
       this.authenticationService.authenticationState.subscribe(state => {
+        console.log(state);
         if (state) {
-          this.router.navigate([''])
+          this.router.navigate([""]);
         } else {
-          this.router.navigate(['login'])
+          this.router.navigate(["login"]);
         }
-      })
+      });
     });
   }
 }

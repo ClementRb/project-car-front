@@ -1,8 +1,8 @@
-import { Injectable } from "@angular/core";
-import { ToastController } from "@ionic/angular";
+import { Injectable } from '@angular/core';
+import { ToastController } from '@ionic/angular';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class AlertService {
   color = null;
@@ -10,14 +10,14 @@ export class AlertService {
   constructor(private toastController: ToastController) {}
   async presentToast(message: any, state) {
     if (state) {
-      this.color = "success";
+      this.color = 'success';
     } else {
-      this.color = "primary";
+      this.color = 'primary';
     }
     const toast = await this.toastController.create({
       message: message,
       duration: 2000,
-      position: "top",
+      position: 'top',
       color: this.color
     });
     toast.present();

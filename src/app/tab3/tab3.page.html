@@ -1,9 +1,27 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Tab Three
+  <ion-toolbar class="background-primary">
+    <ion-title *ngIf="user">
+      {{user.username}}
     </ion-title>
+    <ion-icon name='menu' class="ion-float-end" style="font-size: larger;" (click)="presentActionSheet()"></ion-icon>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-card color='dark' *ngFor='let garage of garages'>
+    <ion-card-header>
+      <ion-card-title>{{garage.name}}</ion-card-title>
+      <ion-icon class="ion-float-end" name="add-circle" (click)="presentModal(garage.id)"></ion-icon>
+    </ion-card-header>
+    <ion-card-content>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

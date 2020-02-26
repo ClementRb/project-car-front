@@ -1,13 +1,13 @@
-import { Injectable } from "@angular/core";
-import { HTTP } from "@ionic-native/http/ngx";
-import { Router } from "@angular/router";
-import { Storage } from "@ionic/storage";
-import { ToastController, Platform } from "@ionic/angular";
-import { BehaviorSubject } from "rxjs";
-import { EnvService } from "./env.service";
+import { Injectable } from '@angular/core';
+import { HTTP } from '@ionic-native/http/ngx';
+import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage';
+import { ToastController, Platform } from '@ionic/angular';
+import { BehaviorSubject } from 'rxjs';
+import { EnvService } from './env.service';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class AuthenticationService {
   authenticationState = new BehaviorSubject(false);
@@ -27,7 +27,7 @@ export class AuthenticationService {
   }
 
   checkToken() {
-    this.storage.get("TOKEN_KEY").then(
+    this.storage.get('TOKEN_KEY').then(
       res => {
         if (res) {
           this.TOKEN_KEY = res;
@@ -47,12 +47,18 @@ export class AuthenticationService {
   }
 
   logout() {
-    this.storage.remove("TOKEN_KEY").then(() => {
+    this.storage.remove('TOKEN_KEY').then(() => {
       this.authenticationState.next(false);
     });
   }
 
   isAuthenticated() {
     return this.authenticationState.value;
+  }
+
+  getToken() {
+    this.storage.get('TOKEN_KEY').then((res) => {
+      return res;
+    });
   }
 }
