@@ -26,27 +26,27 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 @font-face {
-  font-family: 'Avenir Book';
-  src: url('./assets/fonts/avenir/AvenirLTStd-Book.otf');
+  font-family: "Avenir Book";
+  src: url("./assets/fonts/avenir/AvenirLTStd-Book.otf");
 }
 
 @font-face {
-  font-family: 'Avenir Medium';
-  src: url('./assets/fonts/avenir/AvenirLTStd-Medium.otf');
+  font-family: "Avenir Medium";
+  src: url("./assets/fonts/avenir/AvenirLTStd-Medium.otf");
 }
 
 @font-face {
-  font-family: 'Avenir Roman';
-  src: url('./assets/fonts/avenir/AvenirLTStd-Roman.otf');
+  font-family: "Avenir Roman";
+  src: url("./assets/fonts/avenir/AvenirLTStd-Roman.otf");
 }
 
 :root {
-  --ion-font-family: 'Avenir Book';
-  font-family: 'Avenir Book';
+  --ion-font-family: "Avenir Book";
+  font-family: "Avenir Book";
 }
 
 .primary-input {
-  --background: rgba(78, 89, 111, 0.4) ;
+  --background: rgba(78, 89, 111, 0.4);
   border-radius: 20px;
   --padding-start: 30px;
   --color: #ffffff;
@@ -62,11 +62,11 @@
 }
 
 .basicOption {
-  --color	: black;
+  --color: black;
 }
 
 .importantOption {
-  --color	: red;
+  --color: red;
 }
 
 .basicAlert {
@@ -76,6 +76,10 @@
 .basicAlert .basicInput {
   --background: white !important;
   background-color: white !important;
-  --color	: black;
-  --placeholder-color	: grey;
+  --color: black;
+  --placeholder-color: grey;
+}
+
+.item-add-car {
+  --color: white;
 }

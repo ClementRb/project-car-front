@@ -16,10 +16,11 @@ import { IonicStorageModule } from "@ionic/storage";
 import { HTTP } from "@ionic-native/http/ngx";
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { AddCarPage } from "./Modal/add-car/add-car.page";
+import { CreateCarPage } from "./Modal/create-car/create-car.page";
 
 @NgModule({
-  declarations: [AppComponent, AddCarPage],
-  entryComponents: [AddCarPage],
+  declarations: [AppComponent, AddCarPage, CreateCarPage],
+  entryComponents: [AddCarPage, CreateCarPage],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),

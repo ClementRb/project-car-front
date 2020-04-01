@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar class="background-primary">
+    <ion-title>Create a car</ion-title>
+    <div class="ion-float-end" (click)="dismiss()">Close</div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Brands</ion-label>
+    <ion-select
+      ok-text="Ok"
+      cancel-text="Close"
+      (ionChange)="getModels($event)"
+    >
+      <ion-select-option *ngFor="let brand of brands" value="{{brand.id}}"
+        >{{brand.name}}</ion-select-option
+      >
+    </ion-select>
+  </ion-item>
+  <ion-item *ngIf="models">
+    <ion-label>Models</ion-label>
+    <ion-select
+      ok-text="Ok"
+      cancel-text="Close"
+      (ionChange)="getSubModels($event)"
+    >
+      <ion-select-option *ngFor="let model of models" value="{{model.id}}"
+        >{{model.name}}</ion-select-option
+      >
+    </ion-select>
+  </ion-item>
+
+  <ion-item *ngIf="submodels">
+    <ion-label>Sub Models</ion-label>
+    <ion-select
+      ok-text="Ok"
+      cancel-text="Close"
+      (ionChange)="changeSubModel($event)"
+    >
+      <ion-select-option
+        *ngFor="let submodel of submodels"
+        value="{{submodel.id}}"
+        >{{submodel.name}}</ion-select-option
+      >
+    </ion-select>
+  </ion-item>
+
+  <ion-button
+    *ngIf="selectedBrand && selectedModel && selectedSubModel"
+    expand="block"
+    (click)="createCar()"
+    >Create the car</ion-button
+  >
+</ion-content>

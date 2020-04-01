@@ -6,6 +6,7 @@ import { Routes, RouterModule } from "@angular/router";
 import { IonicModule } from "@ionic/angular";
 
 import { AddCarPage } from "./add-car.page";
+import { CreateCarPage } from "../create-car/create-car.page";
 
 const routes: Routes = [
   {
@@ -21,6 +22,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [AddCarPage]
+  declarations: [AddCarPage, CreateCarPage]
 })
 export class AddCarPageModule {}

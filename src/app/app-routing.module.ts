@@ -20,6 +20,10 @@ const routes: Routes = [
   {
     path: "add-car",
     loadChildren: "./Modal/add-car/add-car.module#AddCarPageModule"
+  },
+  {
+    path: "create-car",
+    loadChildren: "./Modal/create-car/create-car.module#CreateCarPageModule"
   }
 ];
 @NgModule({

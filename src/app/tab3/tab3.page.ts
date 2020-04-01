@@ -8,6 +8,7 @@ import { ActionSheetController, ModalController } from "@ionic/angular";
 import { AlertController } from "@ionic/angular";
 import { GarageService } from "src/app/services/garage/garage.service";
 import { AddCarPage } from "src/app/Modal/add-car/add-car.page";
+import { CreateCarPage } from "src/app/Modal/create-car/create-car.page";
 
 @Component({
   selector: "app-tab3",
@@ -30,6 +31,8 @@ export class Tab3Page implements OnInit {
   user: any = {};
   garages = [];
   garageToModify = null;
+  expanded = null;
+  carsOfGarage = null;
 
   ngOnInit() {
     this.storage.get("USER_INFO").then(userInfo => {
@@ -37,6 +40,18 @@ export class Tab3Page implements OnInit {
       this.user = userJson.user;
       console.log(this.user);
       this.getGarage();
+    });
+  }
+
+  expand(garageId) {
+    console.log(garageId);
+    if (this.expanded === garageId) {
+      this.expanded = null;
+    } else {
+      this.expanded = garageId;
+    }
+    this.garage.getCars(garageId).then(data => {
+      console.log(data);
     });
   }
 
@@ -51,10 +66,10 @@ export class Tab3Page implements OnInit {
           }
         },
         {
-          text: "Settings",
+          text: "New car",
           cssClass: "basicOption",
           handler: () => {
-            console.log("Share clicked");
+            this.presentModalCreateCar();
           }
         },
         {
@@ -110,47 +125,19 @@ export class Tab3Page implements OnInit {
     await alert.present();
   }
 
-  async addCar(garageId) {
-    this.garageToModify = garageId;
-    console.log(this.garageToModify);
-    const alert = await this.alertController.create({
-      header: "Add a car to the garage",
-      cssClass: "basicAlert",
-      inputs: [
-        {
-          name: "Name",
-          type: "text",
-          cssClass: "basicInput",
-          placeholder: "Name of the car"
-        }
-      ],
-      buttons: [
-        {
-          text: "Cancel",
-          role: "cancel",
-          cssClass: "secondary",
-          handler: () => {
-            console.log("Confirm Cancel");
-          }
-        },
-        {
-          text: "Ok",
-          handler: data => {
-            this.addCarToGarage(2);
-          }
-        }
-      ]
-    });
-
-    await alert.present();
-  }
-
   async presentModal(garageId) {
     const modal = await this.modalController.create({
       component: AddCarPage,
       componentProps: {
-        "garageId": garageId
+        garageId: garageId
       }
+    });
+    return await modal.present();
+  }
+
+  async presentModalCreateCar() {
+    const modal = await this.modalController.create({
+      component: CreateCarPage
     });
     return await modal.present();
   }
@@ -169,15 +156,6 @@ export class Tab3Page implements OnInit {
       console.log(data);
       const newData: any = data;
       this.garages = JSON.parse(newData);
-    });
-  }
-
-  addCarToGarage(carId) {
-    console.log(this.garageToModify, carId);
-    const idGarage = this.garageToModify.toString();
-    const idCar = carId.toString();
-    this.garage.addCar(idGarage, idCar).then(data => {
-      console.log(data);
     });
   }
 

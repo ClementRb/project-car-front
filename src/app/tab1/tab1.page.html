@@ -4,15 +4,17 @@
       pullingIcon="arrow-dropdown"
       pullingText="Pull to refresh"
       refreshingSpinner="circles"
-      refreshingText="Refreshing...">
+      refreshingText="Refreshing..."
+    >
     </ion-refresher-content>
   </ion-refresher>
-  <ion-card color='dark' *ngFor='let car of cars'>
+  <ion-card color="dark" *ngFor="let car of cars">
     <ion-card-header>
-      <ion-card-subtitle>{{car.brand.name}} - {{car.model.name}}</ion-card-subtitle>
+      <ion-card-subtitle
+        >{{car.brand.name}} - {{car.model.name}}</ion-card-subtitle
+      >
       <ion-card-title>{{car.subModel.name}}</ion-card-title>
     </ion-card-header>
-    <ion-card-content>
-    </ion-card-content>
+    <ion-card-content> </ion-card-content>
   </ion-card>
 </ion-content>

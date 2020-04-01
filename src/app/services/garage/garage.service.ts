@@ -58,19 +58,35 @@ export class GarageService {
   addCar(garageId, carId) {
     this.http.setDataSerializer("json");
     return new Promise(resolve => {
-      this.http.post(
-        this.ENV.API_URL + `/api/garage/car/${carId}`,
-        { garage_id: garageId },
-        {}
-      )
-      .then(response => {
-        resolve(response.data);
-      })
-      .catch(response => {
-        console.log(response);
-        const message = response.error;
-        this.alert.presentToast(message, false);
-      });
+      this.http
+        .post(
+          this.ENV.API_URL + `/api/garage/car/${carId}`,
+          { garage_id: garageId },
+          {}
+        )
+        .then(response => {
+          resolve(response.data);
+        })
+        .catch(response => {
+          console.log(response);
+          const message = response.error;
+          this.alert.presentToast(message, false);
+        });
+    });
+  }
+
+  getCars(garageId) {
+    this.http.setDataSerializer("json");
+    return new Promise(resolve => {
+      this.http
+        .get(this.ENV.API_URL + `/api/garage/${garageId}/cars`, {}, {})
+        .then(response => {
+          resolve(response.data);
+        })
+        .catch(response => {
+          const message = response.error;
+          this.alert.presentToast(message, false);
+        });
     });
   }
 }
