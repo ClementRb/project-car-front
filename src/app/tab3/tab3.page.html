@@ -37,6 +37,13 @@
         ></ion-icon
       ></ion-card-title>
     </ion-card-header>
-    <ion-card-content *ngIf="garage.id === expanded">Bonjour</ion-card-content>
+    <ion-card-content *ngIf="garage.id === expanded">
+      <ion-list lines="none" *ngIf="carsOfGarage.length > 0">
+        <ion-item *ngFor="let car of carsOfGarage" class="list-car-garage">
+          <ion-label>{{car.subModel.name}} - {{car.model.name}}</ion-label>
+        </ion-item>
+      </ion-list>
+      <p *ngIf="carsOfGarage.length < 1">No cars</p>
+    </ion-card-content>
   </ion-card>
 </ion-content>

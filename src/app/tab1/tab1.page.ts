@@ -45,7 +45,6 @@ export class Tab1Page implements OnInit {
       .then(data => {
         const newData: any = data;
         this.cars = JSON.parse(newData);
-        console.log(this.cars);
       })
       .catch(error => {
         console.log(error);

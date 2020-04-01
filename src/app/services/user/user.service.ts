@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
-import { HTTP } from '@ionic-native/http/ngx';
-import { EnvService } from '../env.service';
-import { AlertService } from '../alert.service';
+import { Injectable } from "@angular/core";
+import { HTTP } from "@ionic-native/http/ngx";
+import { EnvService } from "../env.service";
+import { AlertService } from "../alert.service";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class UserService {
   constructor(
@@ -14,22 +14,20 @@ export class UserService {
   ) {}
 
   login(username, password) {
-    console.log(username, password);
-    this.http.setDataSerializer('json');
+    this.http.setDataSerializer("json");
     return new Promise(resolve => {
       this.http
         .post(
-          this.ENV.API_URL + '/api/auth/login',
+          this.ENV.API_URL + "/api/auth/login",
           { username: username, password: password },
           {}
         )
         .then(response => {
-          const message = 'Successfully logged in';
+          const message = "Successfully logged in";
           this.alert.presentToast(message, true);
           resolve(response.data);
         })
         .catch(response => {
-          console.log(response);
           const message = response.error;
           this.alert.presentToast(message, false);
         });
@@ -37,17 +35,16 @@ export class UserService {
   }
 
   register(username, email, password) {
-    console.log(username, email, password);
-    this.http.setDataSerializer('json');
+    this.http.setDataSerializer("json");
     return new Promise(resolve => {
       this.http
         .post(
-          this.ENV.API_URL + '/api/auth/register',
+          this.ENV.API_URL + "/api/auth/register",
           { username: username, email: email, password: password },
           {}
         )
         .then(response => {
-          const message = 'Successfully registered';
+          const message = "Successfully registered";
           this.alert.presentToast(message, true);
           resolve(response.data);
         })
@@ -59,11 +56,10 @@ export class UserService {
   }
 
   getUserInfos(username) {
-    this.http.setDataSerializer('json');
-    console.log('getUserInfos');
+    this.http.setDataSerializer("json");
     return new Promise(resolve => {
       this.http
-        .get(this.ENV.API_URL + '/api/user', { username: username }, {})
+        .get(this.ENV.API_URL + "/api/user", { username: username }, {})
         .then(response => {
           resolve(response.data);
         });

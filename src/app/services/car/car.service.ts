@@ -35,7 +35,6 @@ export class CarService {
           resolve(response.data);
         })
         .catch(response => {
-          console.log(response);
           const message = response.error;
           this.alert.presentToast(message, false);
         });
@@ -43,10 +42,6 @@ export class CarService {
   }
 
   createCar(userId, brandId, modelId, subModelId) {
-    console.log(userId);
-    console.log(brandId);
-    console.log(modelId);
-    console.log(subModelId);
     this.http.setDataSerializer("json");
     return new Promise(resolve => {
       this.http

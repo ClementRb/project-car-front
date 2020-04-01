@@ -32,27 +32,28 @@ export class Tab3Page implements OnInit {
   garages = [];
   garageToModify = null;
   expanded = null;
-  carsOfGarage = null;
+  carsOfGarage = [];
 
   ngOnInit() {
     this.storage.get("USER_INFO").then(userInfo => {
       const userJson = JSON.parse(userInfo);
       this.user = userJson.user;
-      console.log(this.user);
       this.getGarage();
     });
   }
 
   expand(garageId) {
-    console.log(garageId);
+    this.carsOfGarage = [];
     if (this.expanded === garageId) {
       this.expanded = null;
     } else {
       this.expanded = garageId;
+      this.garage.getCars(garageId).then(data => {
+        const newData: any = data;
+        const parsedData = JSON.parse(newData);
+        this.carsOfGarage = parsedData.cars;
+      });
     }
-    this.garage.getCars(garageId).then(data => {
-      console.log(data);
-    });
   }
 
   async presentActionSheet() {
@@ -143,9 +144,7 @@ export class Tab3Page implements OnInit {
   }
 
   createGarage(name) {
-    console.log(name);
     this.garage.postGarage(this.user.id, name).then(data => {
-      console.log(data);
       this.getGarage();
     });
   }
@@ -153,7 +152,6 @@ export class Tab3Page implements OnInit {
   getGarage() {
     const userId = this.user.id.toString();
     this.garage.getGarage(userId).then(data => {
-      console.log(data);
       const newData: any = data;
       this.garages = JSON.parse(newData);
     });

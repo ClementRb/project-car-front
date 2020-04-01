@@ -18,7 +18,6 @@ export class GarageService {
   ) {}
 
   getGarage(userId) {
-    console.log(userId);
     this.http.setDataSerializer("json");
     return new Promise(resolve => {
       this.http
@@ -27,7 +26,6 @@ export class GarageService {
           resolve(response.data);
         })
         .catch(response => {
-          console.log(response);
           const message = response.error;
           this.alert.presentToast(message, false);
         });
@@ -35,7 +33,6 @@ export class GarageService {
   }
 
   postGarage(userId, name) {
-    console.log("ici");
     this.http.setDataSerializer("json");
     return new Promise(resolve => {
       this.http
@@ -48,7 +45,6 @@ export class GarageService {
           resolve(response.data);
         })
         .catch(response => {
-          console.log(response);
           const message = response.error;
           this.alert.presentToast(message, false);
         });
@@ -68,7 +64,6 @@ export class GarageService {
           resolve(response.data);
         })
         .catch(response => {
-          console.log(response);
           const message = response.error;
           this.alert.presentToast(message, false);
         });

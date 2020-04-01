@@ -29,7 +29,6 @@ export class AppComponent {
 
       this.authenticationService.checkToken();
       this.authenticationService.authenticationState.subscribe(state => {
-        console.log(state);
         if (state) {
           this.router.navigate([""]);
         } else {

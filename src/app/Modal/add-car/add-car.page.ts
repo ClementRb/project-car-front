@@ -20,7 +20,6 @@ export class AddCarPage implements OnInit {
     public garage: GarageService,
     public alert: AlertService
   ) {
-    console.log(navParams.get("garageId"));
     this.garageId = navParams.get("garageId");
   }
 
@@ -49,7 +48,6 @@ export class AddCarPage implements OnInit {
       .then(data => {
         const newData: any = data;
         this.cars = JSON.parse(newData);
-        console.log(this.cars);
       })
       .catch(error => {
         console.log(error);
